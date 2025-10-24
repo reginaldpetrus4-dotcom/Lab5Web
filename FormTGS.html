@@ -1,0 +1,53 @@
+FormTGS.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Pendaftaran</title>
+    <script>
+        function validasiForm() {
+            var nama = document.getElementById("nama").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Cek apakah semua kolom terisi
+            if (nama === "" || email === "" || password === "") {
+                alert("Semua kolom wajib diisi!");
+                return false;
+            }
+
+            // Validasi format email
+            var polaEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!polaEmail.test(email)) {
+                alert("Format email tidak valid!");
+                return false;
+            }
+
+            // Validasi panjang password
+            if (password.length < 6) {
+                alert("Password harus minimal 6 karakter!");
+                return false;
+            }
+
+            // Jika semua validasi lolos
+            alert("Pendaftaran berhasil!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Form Pendaftaran</h2>
+    <form onsubmit="return validasiForm()">
+        <label>Nama Lengkap:</label><br>
+        <input type="text" id="nama" placeholder="Masukkan nama"><br><br>
+
+        <label>Email:</label><br>
+        <input type="text" id="email" placeholder="Masukkan email"><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" id="password" placeholder="Masukkan password"><br><br>
+
+        <input type="submit" value="Daftar">
+    </form>
+</body>
+</html>
